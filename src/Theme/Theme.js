@@ -5,7 +5,7 @@ import {createTheme } from '@mui/material/styles';
     palette: {
         type: 'light',
         primary: {
-          main: '#2d4656',
+          main: 'rgb(14, 10, 5) ',
         },
         secondary: {
           main: '#f50057',
@@ -13,15 +13,27 @@ import {createTheme } from '@mui/material/styles';
         background: {
           default: '#e4e4e3',
         },
-      },
+      }, 
     typography:{
         fontFamily: "Quicksand",
                     fontWeightLight:400,
                     fontWeightRegular:500,
                     fontWeightMedium:600,
-                    fontWeightBold:700,
+                    fontWeightBold:700, 
+                    
+      body1:{color: 'white'},
+      h4:{color: 'white'},
+      h2:{color: 'white'},
+      h6:{color: 'white'}
 
+
+    },
+
+    button:{
     }
+   
+
+
 
   });
 
