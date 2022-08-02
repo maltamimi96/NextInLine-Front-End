@@ -3,7 +3,6 @@ import { ThemeProvider} from '@mui/material/styles';
 import Appbar from "./Components/Nav/Appbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Login from "./Components/Auth/Login";
 import Authentication from "./Pages/Authentication";
 import Home from "./Pages/Home";
 function App() {

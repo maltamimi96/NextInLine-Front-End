@@ -1,6 +1,7 @@
 import Main from "../Components/Main/Main";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { Box, height } from "@mui/system";
+import StoreNav from "../Components/Nav/StoreNav";
 function Home() {
   return (
     <>

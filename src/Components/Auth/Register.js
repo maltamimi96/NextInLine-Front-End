@@ -54,8 +54,6 @@ function Register() {
         response.then((response)=>{
           const jwt = response?.data?.jwt
           const username =response?.data.username
-          const user_id =response?.data.user_id
-          
             sessionStorage.setItem("token",jwt)
             sessionStorage.setItem("user",username)
           setSuccess(true)
