@@ -1,45 +1,54 @@
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material'
 import { Box, Container } from '@mui/system'
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
-import {Link} from  'react-router-dom'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { DataGrid } from '@mui/x-data-grid';
 
-const fields=["store name","store location"]
+
+
+
+
+
 function StoreList({stores}) {
-  return (    
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 90 },
+   
+    {
+      field: 'location',
+      headerName: 'Store Location',
+      width: 400,
+    },
+    {
+      field: 'name',
+      headerName: 'Store Name',
+      width: 400,
+    },
   
-  <TableContainer >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-          <TableRow>
-            {fields.map((field)=>
-            <TableCell>{field}</TableCell>
-            )}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {fields.map((field) => (
-            <TableRow
-              key={field.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" >
-                {field.name}
-              </TableCell>
-              <TableCell component="th" >
-                <Typography variant='h6'>{field.location}</Typography>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        </Table>
+  ];
 
-    </TableContainer>
+const rows = stores.map((row)=>({
+  id:row.id,
+  location:row.location,
+  name:row.name,
+  
+
+}))
+
+  return (    
+
+    
+    <Box sx={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        disableSelectionOnClick
+      />
+    </Box> 
+  
+  
+
+
+
 
   )
 }

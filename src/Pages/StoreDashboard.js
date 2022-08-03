@@ -21,9 +21,6 @@ function StoreDashboard() {
           <Tab label="Barbers" />
           <Tab label="Availability" />
           <Tab label="Hair Styles" />
-
-
-
         </Tabs>
         {selectedTab===0&&<NewStore/>}
         {selectedTab===1&&<AllClients/>}
