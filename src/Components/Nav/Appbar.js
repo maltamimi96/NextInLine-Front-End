@@ -32,13 +32,13 @@ function Appbar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  return (
-    <AppBar position="static">
-    <Container maxWidth="xl">
-      <Toolbar disableGutters>
+  const handleCloseUserMenu = () => {  
+    setAnchorElUser(null);  
+  };  
+  return (  
+    <AppBar position="static">  
+    <Container maxWidth="xl">  
+      <Toolbar disableGutters>  
 
         <Typography
           variant="h5"
@@ -116,9 +116,16 @@ function Appbar() {
             onClose={handleCloseUserMenu}
           >
             {settings.map((pages) => (
-              <MenuItem key={pages} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" href={`/${pages}`} sx={{color:'black'}}>{pages}</Typography>
-              </MenuItem>
+              <MenuItem key={pages} onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
+            <Button
+              key={pages}
+              onClick={handleCloseNavMenu}
+              sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}
+              href={`/${pages}`}
+            >
+              {pages} 
+            </Button>             
+             </MenuItem>
             ))}
           </Menu>
         </Box>
