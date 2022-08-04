@@ -4,6 +4,7 @@ import StoreList from "../Components/Stores/StoreList"
 import NewStore from "../Components/Stores/NewStore"
 import { AppBar, CssBaseline, Grid, Tab, Tabs } from '@mui/material'
 import { Box } from '@mui/system'
+import AllAvailability from "../Components/Availability/AllAvailability"
 
 
 
@@ -35,7 +36,9 @@ function AdminDashboard() {
         </Tabs>
         {selectedTab===1&&<NewStore/>}
         {selectedTab===0&&stores&&<StoreList stores={stores} />}
+
       </Box>
+      <AllAvailability/>
       </>
     )
 }

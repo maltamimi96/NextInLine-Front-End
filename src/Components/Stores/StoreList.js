@@ -42,6 +42,7 @@ const rows = stores.map((row)=>({
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick
+        
       />
     </Box> 
   

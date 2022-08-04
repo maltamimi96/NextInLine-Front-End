@@ -6,6 +6,7 @@ import Authentication from "./Pages/Authentication";
 import Home from "./Pages/Home";
 import AdminDashboard from "./Pages/AdminDashboard";
 import StoreDashboard from "./Pages/StoreDashboard";
+import Booking from "./Pages/Booking";
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -16,6 +17,8 @@ function App() {
             <Route path="/" element={<Home/>}></Route>
             <Route path="/admin" element={<AdminDashboard/>}></Route>
             <Route path="/dashboard" element={<StoreDashboard/>}></Route>
+            <Route path="/booking" element={<Booking/>}></Route>
+
         </Routes>
       </Router>
 
