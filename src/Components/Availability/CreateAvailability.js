@@ -3,25 +3,34 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import TextField from '@mui/material/TextField';
-import  { useState } from 'react'
+import  { useState,useEffect } from 'react'
+import {createQuestion} from "../../Services/availability.service"
+
 
 function CreateAvailability() {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
-
+    const barber_id=1
 
     const handleChangeStart = (value) => {
       setStart(value);
+
     }
     const handleChangeEnd = (value) => {
         setEnd(value);
-    };
+
+    }
+    const handleSubmit= (e)=> {
+        e.preventDefault()
+        createQuestion(barber_id,start,end)
+    }
+
 
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
 
-    <Grid container>
+    <Grid container component={"form"} noValidate onSubmit={handleSubmit}>
         <Grid item xs={3}>
         <DateTimePicker
           label="START AT"
@@ -39,7 +48,7 @@ function CreateAvailability() {
           renderInput={(params) => <TextField {...params} />}
         />
         <Grid item>
-            <Button type="submit">SUBMIT</Button>
+            <Button type="submit" onvariant="contained" sx={{fontWeight:'400'}}>SUBMIT</Button>
         </Grid>
         </Grid>
 

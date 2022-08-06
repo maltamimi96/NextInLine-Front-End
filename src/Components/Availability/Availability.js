@@ -5,9 +5,9 @@ function Availability({available}) {
   return (
 
         <Paper variant="outlined">
-                <Typography>{available.id}</Typography>
-                <Typography>{available.start}</Typography>
-                <Typography>{available.end}</Typography>
+                <Typography variant="body2">{available.id}</Typography>
+                <Typography variant="body">{available.start}</Typography>
+                <Typography variant="body">{available.end}</Typography>
         </Paper>
   )
 }

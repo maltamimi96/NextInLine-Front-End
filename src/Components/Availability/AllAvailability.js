@@ -18,7 +18,15 @@ function AllAvailability() {
 // Get all availability and Displays Them
   return (
 
-    <Box sx={{display:'flex'}}>
+    <Box sx={
+    {
+        display:'flex',
+        flexWrap:'wrap',
+        gap:1
+        
+    }
+
+    }>
         {availability?.map((av)=>
         
         <Availability available={av}/>

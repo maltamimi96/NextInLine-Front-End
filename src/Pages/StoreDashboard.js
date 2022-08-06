@@ -2,6 +2,7 @@ import { AppBar, CssBaseline, Grid, Tab, Tabs } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import CreateAvailability from '../Components/Availability/CreateAvailability';
+import NewBarber from '../Components/Barbers/NewBarber';
 import AllClients from '../Components/Clients/AllClients';
 import NewStore from '../Components/Stores/NewStore'
 
@@ -26,6 +27,8 @@ function StoreDashboard() {
         </Tabs>
         {selectedTab===0&&<NewStore/>}
         {selectedTab===1&&<AllClients/>}
+        {selectedTab===2&&<NewBarber/>}
+
         {selectedTab===3&&<CreateAvailability/>}
 
       </Box>

@@ -6,9 +6,9 @@ function Booking() {
   return (
     <>
    
-    <CssBaseline/>
     <div>Booking
         <AllAvailability/>
+        
     </div>
      </>
   )

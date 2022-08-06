@@ -12,13 +12,17 @@ const HEADER=
 }
 
 export async function getAll(){
-
-    
-    
     const response = await API.get(AVAILABILITY_URL.URL,HEADER)
     return response.data
-
 }
+
+
+export async function createQuestion(barber_id,start,end)
+{
+    const data={barber_id,start,end}
+    const response = await API.post(AVAILABILITY_URL.URL,data,HEADER)
+    return response.data
+ }
 
 
 

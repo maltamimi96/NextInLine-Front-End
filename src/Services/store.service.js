@@ -28,3 +28,5 @@ export async function createStore(user_id,category_id,title,body)
 
         return response.data
 }
+
+
