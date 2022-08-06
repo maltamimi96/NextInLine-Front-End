@@ -13,7 +13,12 @@ const HEADER=
 
 export async function getAll(){
 
+    
+    
     const response = await API.get(AVAILABILITY_URL.URL,HEADER)
     return response.data
+
 }
+
+
 

@@ -1,6 +1,7 @@
 import { AppBar, CssBaseline, Grid, Tab, Tabs } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
+import CreateAvailability from '../Components/Availability/CreateAvailability';
 import AllClients from '../Components/Clients/AllClients';
 import NewStore from '../Components/Stores/NewStore'
 
@@ -21,9 +22,12 @@ function StoreDashboard() {
           <Tab label="Barbers" />
           <Tab label="Availability" />
           <Tab label="Hair Styles" />
+          
         </Tabs>
         {selectedTab===0&&<NewStore/>}
         {selectedTab===1&&<AllClients/>}
+        {selectedTab===3&&<CreateAvailability/>}
+
       </Box>
 </>
 

@@ -13,7 +13,7 @@ import Link from '@mui/material/Link';
 import Tooltip from "@mui/material/Tooltip";
 
 import SortIcon from '@mui/icons-material/Sort';
-const settings = ['Login', 'Register'];
+const settings = ['Account'];
 function Appbar() {
 
   const pages = ["Products", "Pricing", "Blog"];
@@ -121,7 +121,7 @@ function Appbar() {
               key={pages}
               onClick={handleCloseNavMenu}
               sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}
-              href={`/${pages}`}
+              href={`/login`}
             >
               {pages} 
             </Button>             
@@ -137,42 +137,3 @@ function Appbar() {
 
 export default Appbar
 
-{/* <AppBar position="static"  color='primary'>
-<Container maxWidth='xl'>
-<Toolbar disableGutters>
-    <Box sx={{display:'flex',justifyContent:'space-between'}}>
-    <Box sx={{paddingLeft:10}}>
-            <SortIcon
-              sx={{color:"white"}}
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-            >
-            </SortIcon>
-            <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              fontWeight: 500,
-              letterSpacing: '.3rem',
-              color: 'white',
-              textDecoration: 'none',
-              
-            }}
-          >
-            NEXT IN LINE
-          </Typography>
-
-    </Box>
-    <Box sx={{display:'flex'}}>
-      <Button color='secondary'>Login</Button>
-      <Button color='secondary'>Register</Button>
-    </Box>
-       
-</Box>
-</Toolbar>
-</Container>
-</AppBar> */}
