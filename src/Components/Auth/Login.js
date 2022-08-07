@@ -5,43 +5,34 @@ import Typography from '@mui/material/Typography'
 import { useRef, useState, useReducer,useEffect } from 'react'
 import {Navigate,} from 'react-router-dom'
 import { login } from '../../Services/auth.service'
+import { useGlobalState } from "../../utils/stateContext"
+
 
 
 const initialState={
     email:'',
-    password:''
+    password:'',
   }
-  function reducer(state,action){
-    switch (action.type){
-      case 'setEmail':
-        return {...state,email:action.payload}
-      case 'setPassword':
-          return {...state,password:action.payload}  
-      default:
-        throw new Error()    
-    }
-  }
-
 
 
 function Login() {
-    const [state,dispatch]= useReducer(reducer,initialState)
+
+  const {dispatch} = useGlobalState()
+  const [formData, setFormData] = useState(initialState)
+
     const emailRef = useRef()
     const errRef = useRef()
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false)
   
-    useEffect(() => {
-      emailRef.current.focus()
-  }, [])
-  
+
   useEffect(() => {
-      setErrMsg('')
-  }, [state.email, state.password])
+    setErrMsg('')
+}, [formData.email, formData.password])
   
   const handleSubmit = async (e)=>{
     e.preventDefault()
-    const response = login(state.email,state.password)
+    const response = login(formData)
     response.then((response)=>{
     const jwt = response?.data?.jwt
     const username =response?.data.username
@@ -50,6 +41,18 @@ function Login() {
     sessionStorage.setItem("token",jwt)
     sessionStorage.setItem("user",username)
     sessionStorage.setItem("admin",admin)
+    dispatch({
+      type: "setLoggedInUser",
+      data: response.username
+  })
+  dispatch({
+      type: "setToken",
+      data: response.jwt
+  })
+  dispatch({
+    type: "setAdmin",
+    data: response.admin
+})
 
     setSuccess(true)
     }).catch ((err)=>{ if (!err?.response) {
@@ -64,6 +67,12 @@ function Login() {
     errRef.current.focus()}) 
 }
   
+const handleFormData = (e) => {
+  setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+  })
+}
   return (
     <>
   {success ? (
@@ -89,19 +98,15 @@ function Login() {
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="emailname"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              inputRef={emailRef}
-              onChange={(e) => dispatch({type:"setEmail",payload:e.target.value})}
-              value={state.email}
+          <TextField 
+            type="email"
+            name="email"
+            id="email"
+            value={formData.email}
+            onChange={handleFormData}
+            fullWidth
             />
+
             <TextField
               margin="normal"
               required
@@ -110,9 +115,9 @@ function Login() {
               label="Password"
               type="password"
               id="password"
-              value={state.password}
+              value={formData.password}
               autoComplete="current-password"
-              onChange={(e) => dispatch({type:"setPassword",payload:e.target.value})}
+              onChange={handleFormData}
             />
 
             <Button
@@ -126,6 +131,7 @@ function Login() {
            
           </Box>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+    
         </Box>
     
     )}

@@ -8,37 +8,56 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import React from 'react';
-import Link from '@mui/material/Link';
+import React, { useEffect } from 'react';
 import Tooltip from "@mui/material/Tooltip";
+import { useGlobalState } from "../../utils/stateContext"
+import { useNavigate } from "react-router-dom";
+
+
+
 
 import SortIcon from '@mui/icons-material/Sort';
-const settings = ['Account'];
+const settings = ['Account','logout'];
+
 function Appbar() {
-
+  const {store, dispatch} = useGlobalState()
+  const {loggedInUser} = store
   const pages = ["Products", "Pricing", "Blog"];
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
+  }
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
+  }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
+  }
 
   const handleCloseUserMenu = () => {  
     setAnchorElUser(null);  
-  };  
+  }
+  const logout = (e) => {
+    e.preventDefault()
+    sessionStorage.clear()
+    dispatch({
+        type: "setLoggedInUser",
+        data: null 
+    })
+    dispatch({
+        type: "setToken",
+        data: null 
+    })
+    navigate('/')
+    
+}
   return (  
     <AppBar position="static">  
     <Container maxWidth="xl">  
-      <Toolbar disableGutters>  
+      <Toolbar >  
 
         <Typography
           variant="h5"
@@ -114,19 +133,30 @@ function Appbar() {
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
+
           >
-            {settings.map((pages) => (
-              <MenuItem key={pages} onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
-            <Button
-              key={pages}
-              onClick={handleCloseNavMenu}
-              sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}
-              href={`/login`}
-            >
-              {pages} 
-            </Button>             
+              <MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
+              <Button onClick={handleCloseNavMenu}sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}href={loggedInUser?"/dashboard":"/login"}>{loggedInUser?"Dashboard":"Account"} </Button>    
              </MenuItem>
-            ))}
+
+             
+              {loggedInUser&&<MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
+              <Button onClick={logout}sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}>logout</Button>    
+              </MenuItem> }
+            
+             
+              
+              
+               
+
+             
+
+
+
+
+
+             
+       
           </Menu>
         </Box>
       </Toolbar>

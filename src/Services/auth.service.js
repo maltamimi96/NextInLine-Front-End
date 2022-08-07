@@ -5,14 +5,14 @@ const URL =
   SIGNUP:'auth/sign_up'
 
 }
-export async function login (email,password)  {
-  const response = await API.post(URL.LOGIN,
-    JSON.stringify({email,password}),
-    {
-        headers: { 'Content-Type': 'application/json' },
-        
-    }
-  )
+const HEADER=
+{
+    headers: { 'Content-Type': 'application/json' }
+}
+
+
+export async function login (data)  {
+  const response = await API.post(URL.LOGIN, data,HEADER )
   return response
 }
 
