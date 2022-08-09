@@ -9,14 +9,13 @@ import { useGlobalState } from "../../utils/stateContext"
 
 
 
-const initialState={
-    email:'',
-    password:'',
-  }
 
 
 function Login() {
-
+  const initialState={
+      email:'',
+      password:'',
+    }
   const {dispatch} = useGlobalState()
   const [formData, setFormData] = useState(initialState)
 
@@ -37,10 +36,11 @@ function Login() {
     const jwt = response?.data?.jwt
     const username =response?.data.username
     const admin =response?.data.admin
-
+    console.log(admin)
     sessionStorage.setItem("token",jwt)
     sessionStorage.setItem("user",username)
     sessionStorage.setItem("admin",admin)
+    
     dispatch({
       type: "setLoggedInUser",
       data: response.username
