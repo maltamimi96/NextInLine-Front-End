@@ -35,7 +35,8 @@ function Login() {
     response.then((response)=>{
     const jwt = response?.data?.jwt
     const username =response?.data.username
-    const admin =response?.data.admin
+    const admin = response?.data.admin
+  
     console.log(admin)
     sessionStorage.setItem("token",jwt)
     sessionStorage.setItem("user",username)

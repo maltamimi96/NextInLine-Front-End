@@ -20,13 +20,12 @@ function App() {
   const initialState = {
     loggedInUser: sessionStorage.getItem("user") || null,
     token: sessionStorage.getItem("token") || null,
-    admin: sessionStorage.getItem("admin") 
+    admin:  sessionStorage.getItem("admin") 
 
   }
   const [store, dispatch] = useReducer(reducer, initialState)
   const {loggedInUser,admin} = store
-  const r = false
-  console.log(admin)
+  const r = true
   return (
   
   <>
@@ -40,7 +39,7 @@ function App() {
 
           <Routes>
             {/* Public Routes */}
-              <Route path="/" element={<Home/>}></Route>
+              <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Authentication/>}/>
               <Route path="/booking" element={<Booking/>}/>
 
@@ -48,20 +47,14 @@ function App() {
               <Route element={<PrivateRoutes/>}>
                 <Route path='/dashboard' element={<StoreDashboard/>} />
                  {/* Admin Routes */}
-                { 
-                  r?
-                    <Route path='/admin' element={<AdminDashboard/>} />
-                      :
-                     <Route path='/admin' element={<Unauthorised/>} />
-          
+                {/* <Route path='/admin' element={admin?<AdminDashboard/>:<Unauthorised/>} /> */}
 
-                }
-                
               </Route>
              
-              {/* <Route element={<AdminRoutes/>}>
+              <Route element={<AdminRoutes/>}>
                 <Route path='/admin' element={<AdminDashboard/>} />
-              </Route> */}
+              </Route>
+              <Route path='/unauthorised' element={<Unauthorised/>} />
 
 
           </Routes>

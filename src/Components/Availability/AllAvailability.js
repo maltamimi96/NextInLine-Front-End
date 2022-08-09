@@ -10,9 +10,9 @@ function AllAvailability() {
   const [availability, setAvailability] = useState(null)
 
   useEffect(() => {
-     getAll().then((getAll)=>setAvailability(getAll)).then(console.log(availability)
+     getAll().then((getAll)=>setAvailability(getAll))
 
-)
+
 
 }, [])
 // Get all availability and Displays Them

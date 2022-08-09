@@ -8,12 +8,28 @@ function AdminRoutes() {
 
 
     const {store} = useGlobalState()
-    const {admin} = store
+     const {admin} = store
+    let r=false
+
+    console.log(store.admin,"from admin")
+    if (admin ==="false"){
+         r=false
+        sessionStorage.setItem("admin",admin)
+        console.log(r)
+        console.log(sessionStorage.getItem("admin") )
+      }else if (admin==="true"){
+         r=true
+        console.log(r)
+      }
+      else{
+        console.log(r)
+      }
+    
 
 
   return (
  
-    admin ? <Outlet/> : <Navigate to='/login'/>
+    r ? <Outlet/> : <Navigate to='/unauthorised'/>
   
   )
 }
