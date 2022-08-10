@@ -4,24 +4,77 @@ import{createBarber} from '../../Services/barber.service'
 
 function NewBarber() {
 
-        const [store_id,setStore_id]=useState(1)
-        const [first_name,setFirst_Name]=useState(null)
-        const [last_name,setLast_Name]=useState(null)
-
-    const handleSubmit= (e)=> {
+ const initialState={
+        first_name:'',
+        last_name:'',
+        store_id:1,
+      }
+      const {dispatch} = useGlobalState()
+      const [formData, setFormData] = useState(initialState)
+      const handleFormData = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.id]: e.target.value
+        })
+      }
+    
+      const handleSubmit = (e)=>{
         e.preventDefault()
-        createBarber(first_name,last_name,store_id)
-    }
+        createClient(formData)
+      }
 
-  return (
-    <Box component={"form"} noValidate onSubmit={handleSubmit}>
-        <TextField id="outlined-basic" onChange={(e)=>setFirst_Name(e.target.value)} label="Outlined" variant="outlined" />
-        <TextField id="outlined-basic" onChange={(e)=>setLast_Name(e.target.value)} label="Outlined" variant="outlined" />
+return (
+<Box
+        
+        sx={{
+          marginTop: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+            
 
-        <Button type='submit'>Add New Barber</Button>
+        <Typography variant="h4">
+          Create New Store
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <TextField 
+          type="text"
+          name="first_name"
+          label='First Name'
+          id="first_name"
+          value={formData.first_name}
+          onChange={handleFormData}
+          fullWidth
+          />
+         <TextField 
+          type="text"
+          name="last_name"
+          label='last Name'
+          id="last_name"
+          value={formData.last_name}
+          onChange={handleFormData}
+          fullWidth
+          />
 
-    </Box>
-  )
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Add Barber
+          </Button>
+         
+        </Box>
+  
+      </Box>
+  
+
+)
 }
+
 
 export default NewBarber
