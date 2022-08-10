@@ -4,12 +4,15 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import TextField from '@mui/material/TextField';
 import  { useState,useEffect } from 'react'
-import {createQuestion} from "../../Services/availability.service"
+import {createAvailability} from "../../Services/availability.service"
 
 
 function CreateAvailability() {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
+
+    
+
     const barber_id=1
 
     const handleChangeStart = (value) => {
@@ -22,9 +25,10 @@ function CreateAvailability() {
     }
     const handleSubmit= (e)=> {
         e.preventDefault()
-        createQuestion(barber_id,start,end)
+        createAvailability(barber_id,start,end)
     }
 
+   
 
 
   return (
@@ -37,6 +41,7 @@ function CreateAvailability() {
           value={start}
           onChange={handleChangeStart}
           renderInput={(params) => <TextField {...params} />}
+          id='end'
         />
 
         </Grid>
@@ -46,6 +51,7 @@ function CreateAvailability() {
           value={end}
           onChange={handleChangeEnd}
           renderInput={(params) => <TextField {...params} />}
+          id='end'
         />
         <Grid item>
             <Button type="submit" onvariant="contained" sx={{fontWeight:'400'}}>SUBMIT</Button>

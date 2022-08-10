@@ -16,3 +16,4 @@ export async function getAll(){
     const response = await API.get(BOOKING_URL.URL,HEADER)
     return response.data
 }
+

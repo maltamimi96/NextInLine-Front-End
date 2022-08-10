@@ -5,11 +5,11 @@ import AllAvailability from '../Components/Availability/AllAvailability'
 function Booking() {
   return (
     <>
-   
-    <div>Booking
+  
+      
         <AllAvailability/>
         
-    </div>
+    
      </>
   )
 }

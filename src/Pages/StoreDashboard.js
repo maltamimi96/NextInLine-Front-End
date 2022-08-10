@@ -5,6 +5,7 @@ import CreateAvailability from '../Components/Availability/CreateAvailability';
 import NewBarber from '../Components/Barbers/NewBarber';
 import AllClients from '../Components/Clients/AllClients';
 import NewStore from '../Components/Stores/NewStore'
+import TabMenu from '../Components/TabMenu';
 
 function StoreDashboard() {
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -12,6 +13,7 @@ function StoreDashboard() {
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+  const tabs=['add','all']
   return (
 <>
 
@@ -23,14 +25,14 @@ function StoreDashboard() {
           <Tab label="Barbers" />
           <Tab label="Availability" />
           <Tab label="Hair Styles" />
-          
+
         </Tabs>
         {selectedTab===0&&<NewStore/>}
         {selectedTab===1&&<AllClients/>}
         {selectedTab===2&&<NewBarber/>}
 
-        {selectedTab===3&&<CreateAvailability/>}
-
+        {selectedTab===3&&<TabMenu tabs={tabs}/> }
+        
       </Box>
 </>
 
