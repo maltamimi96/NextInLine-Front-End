@@ -16,26 +16,11 @@ export async function login (data)  {
   return response
 }
 
-export async function sign_up (username,email,password,con_pass)  {
-  const response = await API.post(URL.SIGNUP,
-    JSON.stringify({username,email,password,con_pass}),
-    {
-        headers: { 'Content-Type': 'application/json' },
-        
-    }
-  )
+export async function sign_up (data)  {
+  const response = await API.post(URL.SIGNUP,data,HEADER)
   return response
 }
 
 
-export async function isLoggedIn()
-{
-   return sessionStorage.getItem("token")||null 
-}
 
 
-
-
-export async function logout ()  {
-  sessionStorage.clear()
-}

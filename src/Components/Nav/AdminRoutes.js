@@ -14,17 +14,13 @@ function AdminRoutes() {
     console.log(store.admin,"from admin")
     if (admin ==="false"){
          r=false
-        sessionStorage.setItem("admin",admin)
-        console.log(r)
-        console.log(sessionStorage.getItem("admin") )
       }else if (admin==="true"){
          r=true
-        console.log(r)
       }
       else{
         console.log(r)
       }
-    
+      console.log(admin)
 
 
   return (
