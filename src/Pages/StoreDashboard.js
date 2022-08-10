@@ -4,6 +4,7 @@ import React from 'react'
 import CreateAvailability from '../Components/Availability/CreateAvailability';
 import NewBarber from '../Components/Barbers/NewBarber';
 import AllClients from '../Components/Clients/AllClients';
+import NewClient from '../Components/Clients/NewClient';
 import NewStore from '../Components/Stores/NewStore'
 import TabMenu from '../Components/TabMenu';
 
@@ -28,7 +29,7 @@ function StoreDashboard() {
 
         </Tabs>
         {selectedTab===0&&<NewStore/>}
-        {selectedTab===1&&<AllClients/>}
+        {selectedTab===1&&<NewClient/>}
         {selectedTab===2&&<NewBarber/>}
 
         {selectedTab===3&&<TabMenu tabs={tabs}/> }

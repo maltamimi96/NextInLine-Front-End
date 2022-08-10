@@ -20,13 +20,22 @@ export async function getAll(){
 }
 
 
-export async function createStore(user_id,category_id,title,body)
+export async function createStore(data)
 {
-    const data={user_id,category_id,title,body}
-    const response = await API.post(STORE_URL.URL,HEADER,data,)
-        
-
-        return response.data
+    const response = await API.post(STORE_URL.URL,data,HEADER)
+    return response.data
 }
+
+export async function deleteStore(id)
+{
+    const response = await API.delete(STORE_URL.URL_ID+id,id,HEADER)
+    return response.data
+}
+export async function updateStore(id,data)
+{
+    const response = await API.put(STORE_URL.URL_ID+id,data,HEADER)
+    return response.data
+}
+
 
 
