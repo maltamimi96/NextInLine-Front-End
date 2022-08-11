@@ -5,6 +5,8 @@ import { useGlobalState } from "../../utils/stateContext"
 import { useRef, useState, useReducer,useEffect } from 'react'
 import {createStore} from '../../Services/store.service'
 import Typography from '@mui/material/Typography'
+import InputFieldText from '../UniversalComponents/InputFieldText'
+import FormButton from '../UniversalComponents/FormButton'
 
 
 function NewStore() {
@@ -29,6 +31,7 @@ function NewStore() {
   return (
     
 
+
 <Box
         
         sx={{
@@ -38,43 +41,32 @@ function NewStore() {
           alignItems: 'center',
         }}
       >
-            
+
 
         <Typography variant="h4">
           Create New Store
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-        <TextField 
-          type="text"
-          name="name"
-          label='Store Name'
-          id="name"
-          value={formData.name}
-          onChange={handleFormData}
-          fullWidth
+
+
+          <InputFieldText
+            name="name"
+            label='Store Name'
+            id="name"
+            value={formData.name}
+            onChange={handleFormData}
           />
 
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+          
+          <InputFieldText
             name="location"
             label="location"
             type="text"
             id="location"
-            value={formData.password}
-            autoComplete="current-password"
-            onChange={handleFormData}
+            value={formData.location}
           />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Create Store
-          </Button>
+          <FormButton text='create store'/>
          
         </Box>
   

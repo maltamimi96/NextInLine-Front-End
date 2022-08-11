@@ -1,6 +1,12 @@
 import { Box, Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import{createBarber} from '../../Services/barber.service'
+import { useGlobalState } from "../../utils/stateContext"
+import Typography from '@mui/material/Typography'
+import InputFieldText from '../UniversalComponents/InputFieldText'
+import FormButton from '../UniversalComponents/FormButton'
+
+
 
 function NewBarber() {
 
@@ -20,7 +26,7 @@ function NewBarber() {
     
       const handleSubmit = (e)=>{
         e.preventDefault()
-        createClient(formData)
+        createBarber(formData)
       }
 
 return (
@@ -38,8 +44,8 @@ return (
         <Typography variant="h4">
           Create New Store
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-        <TextField 
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1,padding:2 }}>
+        {/* <TextField 
           type="text"
           name="first_name"
           label='First Name'
@@ -48,7 +54,7 @@ return (
           onChange={handleFormData}
           fullWidth
           />
-         <TextField 
+        <TextField 
           type="text"
           name="last_name"
           label='last Name'
@@ -56,17 +62,27 @@ return (
           value={formData.last_name}
           onChange={handleFormData}
           fullWidth
+          /> */}
+
+
+          <InputFieldText
+            type="text"
+            name='first name'
+            label='first name'
+            id='first_name'
+            value={formData.first_name}
+            onChange={handleFormData}
           />
-
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Add Barber
-          </Button>
+          
+          <InputFieldText
+            type="text"
+            name='first name'
+            label='Last name'
+            id='last_name'
+            value={formData.last_name}
+            onChange={handleFormData}
+          />
+          <FormButton text={'Add Barber'}/>
          
         </Box>
   

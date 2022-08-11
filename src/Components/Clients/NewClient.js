@@ -5,6 +5,10 @@ import { useGlobalState } from "../../utils/stateContext"
 import { useRef, useState, useReducer,useEffect } from 'react'
 import {createClient} from '../../Services/client.service'
 import Typography from '@mui/material/Typography'
+import InputFieldText from '../UniversalComponents/InputFieldText'
+import FormButton from '../UniversalComponents/FormButton'
+
+
 function NewClient() {
     const initialState={
         first_name:'',
@@ -43,40 +47,32 @@ return (
           Create New Store
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-        <TextField 
-          type="text"
-          name="first_name"
-          label='First Name'
-          id="first_name"
-          value={formData.first_name}
-          onChange={handleFormData}
-          fullWidth
-          />
-         <TextField 
-          type="text"
-          name="last_name"
-          label='last Name'
-          id="last_name"
-          value={formData.last_name}
-          onChange={handleFormData}
-          fullWidth
-          />
-        <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="phone"
-            label="phone number"
-            type="phone"
-            id="phone"
-            value={formData.phone}
-            onChange={handleFormData}
-          />
 
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+          <InputFieldText
+             type="text"
+             name="first_name"
+             label='First Name'
+             id="first_name"
+             value={formData.first_name}
+             onChange={handleFormData}
+          />
+          <InputFieldText
+              type="text"
+              name="last_name"
+              label='last Name'
+              id="last_name"
+              value={formData.last_name}
+              onChange={handleFormData}
+          />
+          <InputFieldText
+           name="phone"
+           label="phone number"
+           type="phone"
+           id="phone"
+           value={formData.phone}
+           onChange={handleFormData}
+          />
+          <InputFieldText
             name="email"
             label="email"
             type="email"
@@ -84,16 +80,7 @@ return (
             value={formData.email}
             onChange={handleFormData}
           />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Add Client
-          </Button>
-         
+          <FormButton text={"Add Client"}  />
         </Box>
   
       </Box>

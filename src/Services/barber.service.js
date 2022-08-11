@@ -17,9 +17,8 @@ export async function getAll(){
 }
 
 
-export async function createBarber(first_name,last_name,store_id)
+export async function createBarber(data)
 {
-    const data={first_name,last_name,store_id}
     const response = await API.post(BARBER_URL.URL,data,HEADER)
     return response.data
  }
