@@ -22,6 +22,7 @@ import {createTheme } from '@mui/material/styles';
                     fontWeightBold:700, 
                     
       body1:{color: 'white'},
+      body2:{color: 'black'},
       h4:{color: 'white'},
       h2:{color: 'white'},
       h6:{color: 'white'},
