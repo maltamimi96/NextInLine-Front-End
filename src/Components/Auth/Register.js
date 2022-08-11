@@ -7,6 +7,9 @@ import { useRef, useState, useReducer,useEffect } from 'react'
 import {Navigate,} from 'react-router-dom'
 import { sign_up } from '../../Services/auth.service'
 import { useGlobalState } from "../../utils/stateContext"
+import InputFieldText from '../UniversalComponents/InputFieldText'
+import FormButton from '../UniversalComponents/FormButton'
+import FormTitle from '../UniversalComponents/FormTitle'
 
 
 
@@ -78,64 +81,52 @@ return (
       >
             
 
-        <Typography variant="h6">
-          Sign in
-        </Typography>
+          <FormTitle text={"Signup"}/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-        <TextField 
+        <InputFieldText 
           type="text"
           name="username"
           id="username"
-          
           label='username'
           value={formData.username}
           onChange={handleFormData}
-          fullWidth
-          sx={{}}
+
           />
-        <TextField 
-          type="email"
-          name="email"
-          id="email"
           
-          label='E-mail'
-          value={formData.email}
-          onChange={handleFormData}
-          fullWidth
+
+          <InputFieldText 
+                 type="email"
+                 name="email"
+                 id="email"
+                 label='E-mail'
+                 value={formData.email}
+                 onChange={handleFormData}
+
+          />
+          <InputFieldText 
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  value={formData.password}
+                  onChange={handleFormData}
+
+          />
+          <InputFieldText 
+               name="confirm-password"
+               label="Confirm-Password"
+               type="password"
+               id="confirm-password"
+               value={formData.confirmpassword}
+               onChange={handleFormData}
+
           />
 
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            value={formData.password}
-            autoComplete="current-password"
-            onChange={handleFormData}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="confirm-password"
-            label="Confirm-Password"
-            type="password"
-            id="confirm-password"
-            value={formData.confirmpassword}
-            onChange={handleFormData}
-          />
+          <FormButton text={"Sign Up"}/>
+          
+   
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Sign Up
-          </Button>
+
          
         </Box>
         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>

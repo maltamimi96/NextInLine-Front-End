@@ -46,11 +46,8 @@ function App() {
               {/* Private Routes */}
               <Route element={<PrivateRoutes/>}>
                 <Route path='/dashboard' element={<StoreDashboard/>} />
-                 {/* Admin Routes */}
-                {/* <Route path='/admin' element={admin?<AdminDashboard/>:<Unauthorised/>} /> */}
-
               </Route>
-             
+              {/* Admin Routes */}
               <Route element={<AdminRoutes/>}>
                 <Route path='/admin' element={<AdminDashboard/>} />
               </Route>

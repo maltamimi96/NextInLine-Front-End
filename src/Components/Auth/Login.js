@@ -6,6 +6,10 @@ import { useRef, useState, useReducer,useEffect } from 'react'
 import {Navigate,} from 'react-router-dom'
 import { login } from '../../Services/auth.service'
 import { useGlobalState } from "../../utils/stateContext"
+import FormTitle from '../UniversalComponents/FormTitle'
+import InputFieldText from '../UniversalComponents/InputFieldText'
+import FormButton from '../UniversalComponents/FormButton'
+
 
 
 
@@ -95,40 +99,29 @@ const handleFormData = (e) => {
         >
               
 
-          <Typography variant="h6">
-            Sign in
-          </Typography>
+          <FormTitle text={"Sign In"}/>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField 
+          <InputFieldText 
             type="email"
             name="email"
+            label={"email"}
             id="email"
             value={formData.email}
             onChange={handleFormData}
-            fullWidth
             />
 
-            <TextField
-              margin="normal"
-              required
-              fullWidth
+            <InputFieldText
+    
               name="password"
               label="Password"
               type="password"
               id="password"
               value={formData.password}
-              autoComplete="current-password"
               onChange={handleFormData}
             />
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
+            <FormButton text={"sign in"}/>
+            
            
           </Box>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>

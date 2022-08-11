@@ -3,7 +3,7 @@ import API from "../api/axios";
 const STORE_URL=
 {
     URL:"/stores",
-    URL_ID:"store/"
+    URL_ID:"stores/"
 
 }
 const HEADER=
@@ -37,5 +37,9 @@ export async function updateStore(id,data)
     return response.data
 }
 
+export async function getMyStore(id){
+    const response = await API.get(STORE_URL.URL_ID+id,HEADER)
+    return response.data
+}
 
 

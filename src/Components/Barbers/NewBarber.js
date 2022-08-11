@@ -5,6 +5,7 @@ import { useGlobalState } from "../../utils/stateContext"
 import Typography from '@mui/material/Typography'
 import InputFieldText from '../UniversalComponents/InputFieldText'
 import FormButton from '../UniversalComponents/FormButton'
+import FormTitle from '../UniversalComponents/FormTitle'
 
 
 
@@ -41,9 +42,7 @@ return (
       >
             
 
-        <Typography variant="h4">
-          Create New Store
-        </Typography>
+        <FormTitle text={"Add Barber"}/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1,padding:2 }}>
         {/* <TextField 
           type="text"

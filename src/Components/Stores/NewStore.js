@@ -7,6 +7,7 @@ import {createStore} from '../../Services/store.service'
 import Typography from '@mui/material/Typography'
 import InputFieldText from '../UniversalComponents/InputFieldText'
 import FormButton from '../UniversalComponents/FormButton'
+import FormTitle from '../UniversalComponents/FormTitle'
 
 
 function NewStore() {
@@ -43,9 +44,7 @@ function NewStore() {
       >
 
 
-        <Typography variant="h4">
-          Create New Store
-        </Typography>
+       <FormTitle text={"Create Store"}/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 
 
@@ -53,6 +52,8 @@ function NewStore() {
             name="name"
             label='Store Name'
             id="name"
+            type="text"
+
             value={formData.name}
             onChange={handleFormData}
           />
@@ -64,6 +65,7 @@ function NewStore() {
             type="text"
             id="location"
             value={formData.location}
+            onChange={handleFormData}
           />
 
           <FormButton text='create store'/>

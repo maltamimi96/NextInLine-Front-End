@@ -7,6 +7,7 @@ import {createClient} from '../../Services/client.service'
 import Typography from '@mui/material/Typography'
 import InputFieldText from '../UniversalComponents/InputFieldText'
 import FormButton from '../UniversalComponents/FormButton'
+import FormTitle from '../UniversalComponents/FormTitle'
 
 
 function NewClient() {
@@ -43,9 +44,7 @@ return (
       >
             
 
-        <Typography variant="h4">
-          Create New Store
-        </Typography>
+        <FormTitle text={"Add Client"}/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 
           <InputFieldText

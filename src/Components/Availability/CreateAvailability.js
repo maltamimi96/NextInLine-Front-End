@@ -5,6 +5,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import TextField from '@mui/material/TextField';
 import  { useState,useEffect } from 'react'
 import {createAvailability} from "../../Services/availability.service"
+import FormTitle from "../UniversalComponents/FormTitle";
 
 
 function CreateAvailability() {
@@ -35,6 +36,8 @@ function CreateAvailability() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
 
     <Grid container component={"form"} noValidate onSubmit={handleSubmit}>
+    <FormTitle text={"Add Barber"}/>
+    
         <Grid item xs={3}>
         <DateTimePicker
           label="START AT"

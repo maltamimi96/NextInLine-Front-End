@@ -7,7 +7,7 @@ import AllClients from '../Components/Clients/AllClients';
 import NewClient from '../Components/Clients/NewClient';
 import NewStore from '../Components/Stores/NewStore'
 import TabMenu from '../Components/UniversalComponents/TabMenu';
-
+import MyStore from '../Components/Stores/MyStore'
 function StoreDashboard() {
   const [selectedTab, setSelectedTab] = React.useState(0);
 
@@ -28,7 +28,7 @@ function StoreDashboard() {
           <Tab label="Hair Styles" />
 
         </Tabs>
-        {selectedTab===0&&<NewStore/>}
+        {selectedTab===0&&<MyStore/>}
         {selectedTab===1&&<NewClient/>}
         {selectedTab===2&&<NewBarber/>}
         {selectedTab===3&&<TabMenu tabs={tabs}/> }
