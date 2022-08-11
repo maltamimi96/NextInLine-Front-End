@@ -13,7 +13,8 @@ function Availability({available}) {
                 <Typography variant="body">{available.id}</Typography>
                 <Typography variant="body">{available.barber_id}</Typography>
                 <Typography variant="body">{available.start}</Typography>
-                <Typography variant="body">{available.end}</Typography>
+                <Typography variant="body">{available.barber.first_name}</Typography>
+                <Typography variant="body">{available.barber.last_name}</Typography>
                 <Button color="warning" onClick={()=>deleteAvailability(available.id)}>DELETE</Button>
                 </Box>
         </Paper>

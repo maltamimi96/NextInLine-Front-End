@@ -29,6 +29,7 @@ const [allowEdit, setAllowEdit] = useState(false)
       setAllowEdit(true)
     }
   return (
+    <>
       <Box
         
       sx={{
@@ -44,22 +45,38 @@ const [allowEdit, setAllowEdit] = useState(false)
             marginTop: 4,
             display: 'flex',
             alignItems: 'center',
-            flexWrap:'wrap'
+            flexWrap:'wrap',
+            backgroundColor:'lightblue'
             
           }}>
-      <Typography variant='body2' sx={{padding:1}}>ID: {store.user_id}</Typography>
-      <Typography variant='body2' sx={{padding:1}}>Store Name: {store.name}</Typography>
-      <Typography variant='body2' sx={{padding:1}}>Store Location: {store.location}</Typography>
+
+        {store.name? 
+        <>
+      <Typography variant='h5' sx={{padding:1 ,color:'black'}}>ID: {store.user_id}</Typography>
+      <Typography variant='h5' sx={{padding:1,color:'black'}}>Store Name: {store.name}</Typography>
+      <Typography variant='h5' sx={{padding:1,color:'black'}}>Store Location: {store.location}</Typography> 
+      
+      <Box sx={{padding:1}}>
+            <Button variant='contained' color='warning' sx={{marginX:1}}>Delete Store</Button>
+            <Button variant='contained'>Update Store</Button>
+      </Box>
+      </>
+      :
+      
+      <FormTitle text={'No Store Found'}/>
+      
+    
+        }
+            
+      
+
       </Box>
      
       
-      <Box sx={{padding:1}}>
-            <Button variant='contained' color='warning'>Delete Store</Button>
-            <Button variant='contained'>Update Store</Button>
-      </Box>
-
+  
    
     </Box>
+    </>
   )
 }
 

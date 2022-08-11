@@ -11,10 +11,12 @@ function AllAvailability() {
 
   useEffect(() => {
      getAll().then((getAll)=>setAvailability(getAll))
+     
 
 
 
 }, [])
+availability?.map((av)=> console.log(av))
 // Get all availability and Displays Them
   return (
 
@@ -32,6 +34,8 @@ function AllAvailability() {
         <Availability available={av}/>
 
         )}
+
+
     </Box>
 
 
