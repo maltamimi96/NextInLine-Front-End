@@ -1,13 +1,16 @@
-import { CssBaseline } from '@mui/material'
+import { Box, CssBaseline } from '@mui/material'
 import React from 'react'
-import AllAvailability from '../Components/Availability/AllAvailability'
+import AddNewBooking from '../Components/Bookings/AddNewBooking'
 
 function Booking() {
   return (
     <>
   
-      
-        <AllAvailability/>
+      <Box>
+       <AddNewBooking/>
+      </Box>
+        
+
         
     
      </>

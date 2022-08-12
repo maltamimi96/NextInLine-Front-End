@@ -7,6 +7,7 @@ import { Button, TextField, Typography } from '@mui/material'
 import InputFieldText from '../UniversalComponents/InputFieldText'
 import FormButton from '../UniversalComponents/FormButton'
 import FormTitle from '../UniversalComponents/FormTitle'
+import NewStore from './NewStore'
 function MyStore() {
 
       const initialState={
@@ -62,9 +63,14 @@ const [allowEdit, setAllowEdit] = useState(false)
       </Box>
       </>
       :
+      <>
       
+      <Box sx={{display:'flex',justifyContent:'center'}}>
       <FormTitle text={'No Store Found'}/>
+      <NewStore/>
+      </Box>
       
+      </>
     
         }
             

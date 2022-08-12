@@ -13,19 +13,27 @@ import React, {useReducer}from 'react'
 import PrivateRoutes from "./Components/Nav/PrivateRoutes";
 import Unauthorised from "./Components/Auth/Unauthorised";
 import AdminRoutes from "./Components/Nav/AdminRoutes";
+import {getAll} from '../src/Services/store.service'
+
+import  { useState,useEffect } from 'react'
+import StoreHome from "./Pages/StoreHome";
 
 function App() {
 
-
+  const [stores,setStores]=useState([])
+  useEffect(() => {
+    getAll().then((getAll)=>setStores(getAll))
+}, [])
   const initialState = {
     loggedInUser: sessionStorage.getItem("user") || null,
     token: sessionStorage.getItem("token") || null,
-    admin:  sessionStorage.getItem("admin") 
+    admin:  sessionStorage.getItem("admin") ,
+    storeId:null
 
   }
   const [store, dispatch] = useReducer(reducer, initialState)
-  const {loggedInUser,admin} = store
-  const r = true
+
+
   return (
   
   <>
@@ -42,6 +50,12 @@ function App() {
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Authentication/>}/>
               <Route path="/booking" element={<Booking/>}/>
+
+              {stores.map((str)=>
+                <Route path={str.name.replace(/\s+/g, '')} element={<StoreHome name={str.name} id={str.id}/>}>
+                </Route>
+              )}
+              
 
               {/* Private Routes */}
               <Route element={<PrivateRoutes/>}>

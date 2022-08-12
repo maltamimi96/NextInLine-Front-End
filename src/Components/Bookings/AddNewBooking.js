@@ -1,32 +1,63 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
+import { Box, CssBaseline, FormControl, MenuItem, Select, Typography } from "@mui/material"
+import InputLabel from '@mui/material/InputLabel';
 
-function AddNewBooking({availability,barber,client,store,hairstyle}) {
+
+import  { useState,useEffect } from 'react'
+import {getAll} from '../../Services/barber.service'
+
+
+
+function AddNewBooking() {
+
+  const [barbers, setBarbers] = useState([]);
+  const [available, setAvailable] = useState([]);
+  useEffect(() => {
+    getAll().then((getAll)=>setBarbers(getAll))
+}, [])
+const handleChange = (event) => {
+  setAvailable(event.target.value);
+}
   return (
+    <>
+    <CssBaseline/>
+          <Box sx={{display:'flex' , gap:2,flexWrap:'wrap' , mt:2 ,justifyContent:'center'}}>
+          {barbers?.map((barber)=>
+                <Box>
+                    <Typography sx={{color:'black'}}>Barber: {barber.first_name} {barber.last_name}</Typography>
+                    <Box sx={{ minWidth: 200 ,display:'flex' ,gap:3,mt:2} }>
+                    <FormControl fullWidth>
+                      <InputLabel sx={{color:'black'}} id="barber--label">Select A date </InputLabel>
+                      <Select
+                        labelId="barber--label"
+                        id="barber-select"
+                        value={available}
+                        label="Barber"
+                        onChange={handleChange}
+                        >
+                      {barber.availabilitys.map((avail)=>
+                        <MenuItem sx={{color:'black'}} value={avail.id}>{avail.start}-{avail.start}</MenuItem>
+                      )}
+                      </Select>
+                    </FormControl>
+                    </Box>
+                </Box>
 
-<Box
-    sx={{
-          marginTop: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-     }}
->
+                
+                
+             )}
+          </Box>
 
-    <Typography> </Typography>
-    
+          <Typography sx={{color:'black'}}>
+              {available}
+            </Typography>
 
+         
 
 
-
-</Box>
-
-
-
-
-
-
+  
+  </>
   )
 }
 
 export default AddNewBooking
+

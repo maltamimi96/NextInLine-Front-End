@@ -46,7 +46,7 @@ function StoreDashboard() {
           <Tab label="Bookings" />
 
         </Tabs>
-        {selectedTab===0&&<TabMenu tabs={['My store','Create New Store',]} component={storeComponents} />}
+        {selectedTab===0&&<TabMenu tabs={['My store','Edit Store',]} component={storeComponents} />}
         {selectedTab===1&&<TabMenu tabs={['add New Client','view all Clients']} component={ClientComponents}/>}
         {selectedTab===2&&<TabMenu tabs={['add New Barber','view all Barbers']} component={barberComponents}/> }
         {selectedTab===3&&<TabMenu tabs={['add New','view all']} component={availabilityComponents}/> }

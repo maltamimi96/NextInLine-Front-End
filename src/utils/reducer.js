@@ -41,6 +41,11 @@ export const reducer = (state, action) => {
             return {...state,password:action.payload}  
 
         }
+        case "setStoresId": {
+            //updates the token value
+            return {...state,storeId:action.data}  
+
+        }
         default: return state
     }
 
