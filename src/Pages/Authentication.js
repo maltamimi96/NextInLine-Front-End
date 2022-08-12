@@ -3,10 +3,13 @@ import { borderColor, Box, Container } from '@mui/system'
 import {useState} from 'react'
 import Login from '../Components/Auth/Login'
 import Register from '../Components/Auth/Register'
+import NavBar from '../Components/Nav/NavBar'
 
 function Authentication() {
 const[account,setAccount]=useState(true)
   return (
+    <>
+    <NavBar/>
     <Container maxWidth='md'>
 
     {account?
@@ -54,7 +57,7 @@ const[account,setAccount]=useState(true)
              
     </Container>
  
-
+</>
 
 
     

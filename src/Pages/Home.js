@@ -2,9 +2,12 @@ import Main from "../Components/Main/Main";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { Box, height } from "@mui/system";
 import StoreNav from "../Components/Nav/StoreNav";
+import NavBar from "../Components/Nav/NavBar";
 function Home() {
   return (
+
     <>
+    <NavBar/>
     <section className="jumbotron">
     <Main></Main>
     </section>

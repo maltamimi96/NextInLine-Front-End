@@ -5,6 +5,7 @@ import NewStore from "../Components/Stores/NewStore"
 import { AppBar, CssBaseline, Grid, Tab, Tabs } from '@mui/material'
 import { Box } from '@mui/system'
 import AllAvailability from "../Components/Availability/AllAvailability"
+import NavBar from "../Components/Nav/NavBar"
 
 
 
@@ -25,7 +26,7 @@ function AdminDashboard() {
   }, [])
   return (
     <>
-   
+    <NavBar/>
         
     <CssBaseline/>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

@@ -1,6 +1,6 @@
 import { theme } from "./Theme/Theme";
 import { ThemeProvider} from '@mui/material/styles';
-import Appbar from "./Components/Nav/Appbar";
+import NavBar from "./Components/Nav/NavBar";
 import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
 import Authentication from "./Pages/Authentication";
 import Home from "./Pages/Home";
@@ -43,7 +43,6 @@ function App() {
         
         <Router>
 
-        <Appbar/>
 
           <Routes>
             {/* Public Routes */}

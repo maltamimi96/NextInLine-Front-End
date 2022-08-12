@@ -11,6 +11,7 @@ import NewClient from '../Components/Clients/NewClient';
 import MyStore from '../Components/Stores/MyStore'
 import NewStore from '../Components/Stores/NewStore'
 import {useState} from 'react'
+import NavBar from '../Components/Nav/NavBar';
 
 
 function StoreDashboard() {
@@ -33,7 +34,7 @@ function StoreDashboard() {
   
   return (
 <>
-
+    <NavBar/>
     <CssBaseline/>
     <Box sx={{ borderBottom: 1 }}>
         <Tabs value={selectedTab} onChange={handleChange}  >

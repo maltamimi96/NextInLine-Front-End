@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import SortIcon from '@mui/icons-material/Sort';
 const settings = ['Account','logout'];
 
-function Appbar() {
+function NavBar() {
   const {store, dispatch} = useGlobalState()
   const {loggedInUser} = store
   const pages = ["Products", "Pricing", "Blog"];
@@ -165,5 +165,5 @@ function Appbar() {
   )
 }
 
-export default Appbar
+export default NavBar
 
