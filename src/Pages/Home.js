@@ -6,6 +6,7 @@ import barberTrim from '../images/barber-trim.jpg';
 import barberSeats from '../images/barber-seats.jpg';
 import barberTools from '../images/barber-tools.jpg';
 import barberTools2 from '../images/barber-tools2.jpg';
+import Footer from '../Components/Footer/Footer';
 
 //Styles
 const styleBoxImage = {
@@ -39,6 +40,7 @@ function Home() {
           </Button>
         </Box>
       </section>
+      <Footer />
     </>
   );
 }
