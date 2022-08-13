@@ -16,7 +16,16 @@ function App() {
 
   const initialState = {
     loggedInUser: sessionStorage.getItem("user") || null,
+<<<<<<< Updated upstream
     token: sessionStorage.getItem("token") || null
+=======
+    token: sessionStorage.getItem("token") || null,
+    admin:  sessionStorage.getItem("admin") ,
+    storeId:null,
+    storesName:null
+
+
+>>>>>>> Stashed changes
   }
   const [store, dispatch] = useReducer(reducer, initialState)
   const {loggedInUser} = store

@@ -140,23 +140,13 @@ function Appbar() {
              </MenuItem>
 
              
-              {loggedInUser&&<MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
+              {loggedInUser
+              &&
+              <MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
               <Button onClick={logout}sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}>logout</Button>    
               </MenuItem> }
             
-             
-              
-              
-               
 
-             
-
-
-
-
-
-             
-       
           </Menu>
         </Box>
       </Toolbar>

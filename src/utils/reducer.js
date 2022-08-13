@@ -42,6 +42,19 @@ export const reducer = (state, action) => {
             return {...state,password:action.payload}  
 
         }
+<<<<<<< Updated upstream
+=======
+        case "setStoresId": {
+            //updates the token value
+            return {...state,storeId:action.data}  
+
+        }
+        case "setStoresName": {
+            //updates the token value
+            return {...state,storesName:action.data}  
+
+        }
+>>>>>>> Stashed changes
         default: return state
     }
 

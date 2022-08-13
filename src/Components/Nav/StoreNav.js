@@ -14,8 +14,12 @@ import Tooltip from "@mui/material/Tooltip";
 
 import SortIcon from '@mui/icons-material/Sort';
 function StoreNav(props) {
-    const pages = ["Products", "Pricing", "Blog"];
-    const settings = ['Login', 'Register'];
+    const settings = [
+    {
+      link:'/Booking',
+      button:'Book'
+    }
+    ];
 
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -46,7 +50,7 @@ function StoreNav(props) {
             component="a"
             href="/"
             sx={{
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: ".3rem",
               textDecoration: "none",
               mr: 2,
@@ -72,19 +76,10 @@ function StoreNav(props) {
               flexGrow: 1
             }}
           >
-            NEXT IN LINE
+            {props.name}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white",fontWeight:'500', display: "block" }}
-                href={`/${page}`}
-              >
-                {page}
-              </Button>
-            ))}
+         
           </Box>
   
           <Box sx={{ flexGrow: 0 }}>
@@ -117,7 +112,7 @@ function StoreNav(props) {
             >
               {settings.map((pages) => (
                 <MenuItem key={pages} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" href={`/${pages}`} sx={{color:'black'}}>{pages}</Typography>
+                  <Typography textAlign="center" component='a'href={pages.link} sx={{color:'black'}}>{pages.button}</Typography>
                 </MenuItem>
               ))}
             </Menu>
