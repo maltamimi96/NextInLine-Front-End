@@ -25,7 +25,7 @@ export async function createBooking(data)
 
 export async function getBooking(id)
 {
-    const response = await API.post(BOOKING_URL.URL,data,HEADER)
+    const response = await API.post(BOOKING_URL.URL,HEADER)
     return response.data
 }
 
