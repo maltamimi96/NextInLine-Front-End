@@ -33,6 +33,7 @@ function CreateAvailability() {
 
     const handleChangeStart = (value) => {
       setStart(value);
+      console.log(start)
 
     }
     const handleChangeEnd = (value) => {
