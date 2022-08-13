@@ -40,8 +40,6 @@ function Login() {
     const jwt = response?.data?.jwt
     const username =response?.data.username
     const admin = response?.data.admin
-    console.log(admin)
-  
     sessionStorage.setItem("token",jwt)
     sessionStorage.setItem("user",username)
     sessionStorage.setItem("admin",admin)
@@ -58,7 +56,6 @@ function Login() {
     type: "setAdmin",
     data: response.admin
 })
-
     setSuccess(true)
     }).catch ((err)=>{ if (!err?.response) {
         setErrMsg('No Server Response')

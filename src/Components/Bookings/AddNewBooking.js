@@ -1,9 +1,11 @@
 import { Box, CssBaseline, FormControl, MenuItem, Select, Typography } from "@mui/material"
 import InputLabel from '@mui/material/InputLabel';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 import  { useState,useEffect } from 'react'
 import {getAll} from '../../Services/barber.service'
+import NewClient from "../Clients/NewClient";
 
 
 
@@ -11,11 +13,15 @@ function AddNewBooking() {
 
   const [barbers, setBarbers] = useState([]);
   const [available, setAvailable] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
   useEffect(() => {
     getAll().then((getAll)=>setBarbers(getAll))
 }, [])
 const handleChange = (event) => {
   setAvailable(event.target.value);
+  setToggle(true)
+
 }
   return (
     <>
@@ -45,11 +51,16 @@ const handleChange = (event) => {
                 
                 
              )}
+             
           </Box>
 
-          <Typography sx={{color:'black'}}>
-              {available}
-            </Typography>
+          {toggle&&<NewClient client={'Enter Your Details Below'}/>}
+
+
+
+          
+        
+            
 
          
 

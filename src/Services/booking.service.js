@@ -17,3 +17,17 @@ export async function getAll(){
     return response.data
 }
 
+export async function createBooking(data)
+{
+    const response = await API.post(BOOKING_URL.URL,data,HEADER)
+    return response.data
+}
+
+export async function getBooking(id)
+{
+    const response = await API.post(BOOKING_URL.URL,data,HEADER)
+    return response.data
+}
+
+
+

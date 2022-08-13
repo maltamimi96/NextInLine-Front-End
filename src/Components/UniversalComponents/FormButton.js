@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import React from 'react'
 
-function FormButton({text}) {
+function FormButton({text,disable}) {
   return (
     
     <Button
@@ -9,6 +9,7 @@ function FormButton({text}) {
         fullWidth
         variant="contained"
         sx={{ m:1 }}
+        disabled={disable}
     >
         {text}
   </Button>

@@ -24,10 +24,10 @@ export async function createAvailability(barber_id,start,end)
     return response.data
  }
 
- export async function updateAvailability(id)
+ export async function updateAvailability(id,data)
 {
     
-    const response = await API.put(AVAILABILITY_URL.URL,id,HEADER)
+    const response = await API.put(AVAILABILITY_URL.URL_ID+id,data,HEADER)
     return response.data
  }
 

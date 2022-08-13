@@ -28,7 +28,11 @@ function App() {
     loggedInUser: sessionStorage.getItem("user") || null,
     token: sessionStorage.getItem("token") || null,
     admin:  sessionStorage.getItem("admin") ,
-    storeId:null
+    storeId:null,
+    client:{},
+    barber:{},
+ 
+
 
   }
   const [store, dispatch] = useReducer(reducer, initialState)
