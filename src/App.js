@@ -13,25 +13,23 @@ import React, {useReducer}from 'react'
 import PrivateRoutes from "./Components/Nav/PrivateRoutes";
 import Unauthorised from "./Components/Auth/Unauthorised";
 import AdminRoutes from "./Components/Nav/AdminRoutes";
-import {getAll} from '../src/Services/store.service'
+import {getAllDomains} from '../src/Services/domain.service'
 
 import  { useState,useEffect } from 'react'
 import StoreHome from "./Pages/StoreHome";
 
 function App() {
 
-  const [stores,setStores]=useState([])
+  const [domain,setDomain]=useState([])
   useEffect(() => {
-    getAll().then((getAll)=>setStores(getAll))
+    getAllDomains().then((getAll)=>setDomain(getAll))
 }, [])
+console.log(domain)
   const initialState = {
     loggedInUser: sessionStorage.getItem("user") || null,
     token: sessionStorage.getItem("token") || null,
     admin:  sessionStorage.getItem("admin") ,
-    storeId:null,
-    client:{},
-    barber:{},
- 
+    storeId:null
   }
   const [store, dispatch] = useReducer(reducer, initialState)
 
@@ -50,8 +48,8 @@ function App() {
               <Route path="/login" element={<Authentication/>}/>
               <Route path="/booking" element={<Booking/>}/>
 
-              {stores.map((str)=>
-                <Route path={str.domain} element={<StoreHome name={str.name} id={str.id}/>}>
+              {domain.map((str)=>
+                <Route path={str.name} element={<StoreHome name={str.name} id={str.id}/>}>
                 </Route>
               )}
               
