@@ -11,7 +11,7 @@ const HEADER=
     headers: { 'Content-Type': 'application/json' }
 }
 
-export async function getAll(){
+export async function getAllBookings(){
 
     const response = await API.get(BOOKING_URL.URL,HEADER)
     return response.data

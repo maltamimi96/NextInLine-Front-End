@@ -15,7 +15,10 @@ export async function getAll(){
     const response = await API.get(AVAILABILITY_URL.URL,HEADER)
     return response.data
 }
-
+export async function getAvailablity(id){
+    const response = await API.get(AVAILABILITY_URL.URL_ID+id,HEADER)
+    return response.data
+}
 
 export async function createAvailability(barber_id,start,end)
 {
@@ -36,6 +39,8 @@ export async function createAvailability(barber_id,start,end)
      const response = await API.delete(AVAILABILITY_URL.URL_ID+id,id,HEADER)
      return response.data
   }
+
+
  
 
 

@@ -7,7 +7,7 @@ import  { useState,useEffect } from 'react'
 import {createAvailability} from "../../Services/availability.service"
 import FormTitle from "../UniversalComponents/FormTitle";
 import FormButton from "../UniversalComponents/FormButton";
-import {getAll} from '../../Services/barber.service'
+import {getAllBarbers} from '../../Services/barber.service'
 
 
 
@@ -20,7 +20,7 @@ function CreateAvailability() {
     const [barbers, setBarbers] = useState([]);
     const [age, setAge] = useState('');
     useEffect(() => {
-      getAll().then((getAll)=>setBarbers(getAll))
+      getAllBarbers().then((getAllBarbers)=>setBarbers(getAllBarbers))
          }, [])
 
     const handleChange = (event) => {

@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 
 import  { useState,useEffect } from 'react'
-import {getAll} from '../../Services/barber.service'
+import {getAllBarbers} from '../../Services/barber.service'
 import NewClient from "../Clients/NewClient";
 
 
@@ -16,7 +16,7 @@ function AddNewBooking() {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    getAll().then((getAll)=>setBarbers(getAll))
+    getAllBarbers().then((getAllBarbers)=>setBarbers(getAllBarbers))
 }, [])
 const handleChange = (event) => {
   setAvailable(event.target.value);

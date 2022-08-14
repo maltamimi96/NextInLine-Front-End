@@ -7,13 +7,21 @@ import FormTitle from '../UniversalComponents/FormTitle'
 import {FormControl, MenuItem, Select,Box, CssBaseline, Button} from "@mui/material"
 import InputLabel from '@mui/material/InputLabel';
 import CircularProgress from '@mui/material/CircularProgress';
-import {getAll} from '../../Services/barber.service'
+import {getAllBarbers} from '../../Services/barber.service'
 import {createBooking} from  '../../Services/booking.service'
 import {getAllHair} from '../../Services/hair_style.service'
 import BookAppointment from '../Bookings/BookAppointment'
+import AllBarbers from '../Barbers/AllBarbers'
+import{useGlobalState} from '../../utils/stateContext'
+import { flexbox } from '@mui/system'
+import { Navigate } from 'react-router-dom'
 
 
 function NewClient() {
+  const store_id=sessionStorage.getItem("store")
+  const {store,dispatch} = useGlobalState()
+  const {storeId}=store
+  const {avId}=store
     const initialState={
         first_name:'',
         last_name:'',
@@ -29,6 +37,7 @@ function NewClient() {
           availability_id:''
           
       }
+
       const [formData, setFormData] = useState(initialState)
       const [errMsg, setErrMsg] = useState('')
       const [success, setSuccess] = useState(false)
@@ -37,39 +46,40 @@ function NewClient() {
       const [barbers, setBarbers] = useState([]);
       const [available, setAvailable] = useState([]);
        const errRef = useRef()
+       
 
       useEffect(() => {
           
-          getAll().then((getAll)=>setBarbers(getAll))
-        }, [])
-  
-
+        getAllBarbers(storeId).then((getAllBarbers)=>setBarbers(getAllBarbers))
+      }, [])
 
         const handleFormDataBooking = (e) => {
           setBookingData({
               ...bookingData,
-              store_id: available.bid.store_id,
+              store_id: sessionStorage.getItem("store"),
               client_id:parseInt(sessionStorage.getItem("clientId")) ,
-              barber_id:available.bid.id,
-              availability_id:available.aid.id,
+              barber_id:available.bId.id,
+              availability_id:available.avID.id,
               hair_style_id:1
 
           })
         }
-  
-    const handleChange = (event) => {
-      setAvailable(event.target.value);
-      handleFormDataBooking()
-      console.log(bookingData)
+        
+    // const handleChange = (event) => {
+    //   setAvailable(event.target.value);
+    //   handleFormDataBooking()
+    //   console.log(bookingData)
       
       
-    }
+    // }
 
       const handleFormData = (e) => {
         setFormData({
             ...formData,
             [e.target.id]: e.target.value
         })
+
+
       }
   
 
@@ -78,9 +88,14 @@ function NewClient() {
     }, [formData.email, formData.last_name,formData.first_name,formData.phone])
       
     const handleSubmit = (e)=>{
-        e.preventDefault()
+
         createClient(formData).then((response)=>{
           setClientinfo(response)
+         
+       sessionStorage.setItem("clientId",clientinfo.id)
+          handleFormDataBooking()
+          console.log(bookingData)
+          createBooking(bookingData)
           setSuccess(true)
         }).catch ((err)=>{ if (!err?.response) {
           setErrMsg('No Server Response')
@@ -93,130 +108,111 @@ function NewClient() {
       }
       errRef.current.focus()}) 
 
-      }
+      console.log(available)
 
-
-      const handleBooking=(e)=>{
-        createBooking({BookingState})
-      }
-
-   success&&sessionStorage.setItem("clientId",clientinfo.id)
-   success&&sessionStorage.setItem("clientFname",clientinfo.first_name)
-   success&&sessionStorage.setItem("clientLname",clientinfo.last_name)
-   success&&sessionStorage.setItem("clientPhone",clientinfo.phone)
-   success&&sessionStorage.setItem("clientEmail",clientinfo.email)
-   
-
-
-  
-
-
-return (
-  <>
-  
-  <CssBaseline/>
-        {success?
-        <>
-         <Box sx={{display:'flex' ,flexDirection:"column", gap:2,flexWrap:'wrap' , mt:2 ,justifyContent:'center' ,padding:5}}>
-          {barbers?.map((barber)=>
-                <Box>
-                  <Typography sx={{color:'black'}}>Barber: {barber.first_name} {barber.last_name}</Typography>
-                    <Box sx={{ minWidth: 200 ,display:'flex' ,gap:3,mt:2} }>
-                    <FormControl fullWidth>
-                      <InputLabel sx={{color:'black'}} id="barber--label">Select A date </InputLabel>
-                      <Select
-                        labelId="barber--label"
-                        id="barber-select"
-                        value={available}
-                        label="Barber"
-                        onChange={handleChange}
-                        >
-                      {barber.availabilitys.map((avail)=>
-                          
-                        <MenuItem sx={{color:'black'}}  value={{aid:avail,bid:barber}}>
-                          <Box >
-                            <Typography variant='body2'>Start: {avail.start}</Typography>
-                            <Typography variant='body2'>End: {avail.end}</Typography>
-
-                          </Box>
-                          
-                          </MenuItem>,
-
-                        
-                      )}
-
-                      </Select>
-                    </FormControl>
-
-                    </Box>
-                </Box>
-             )}
-            {/* {toggle&&<BookAppointment bookingData={bookingData}/>} */}
-          </Box>
-          
-        </>
-          :
-        <>
-        <Box
-        sx={{
-          marginTop: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
-          <FormTitle text={'Add Your Contact Information'}/>
-          <InputFieldText
-             type="text"
-             name="first_name"
-             label='First Name'
-             id="first_name"
-             value={formData.first_name}
-             onChange={handleFormData}
-          />
-          <InputFieldText
-              type="text"
-              name="last_name"
-              label='last Name'
-              id="last_name"
-              value={formData.last_name}
-              onChange={handleFormData}
-          />
-          <InputFieldText
-           name="phone"
-           label="phone number"
-           type="phone"
-           id="phone"
-           value={formData.phone}
-           onChange={handleFormData}
-          />
-          <InputFieldText
-            name="email"
-            label="email"
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={handleFormData}
-          />
-          <FormButton text={success?"Booking Summary":"Add Client"} disable={success?true:false} />
-        </Box>
-        <br/>
-        <Typography variant='body2' ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</Typography>
-      </Box>
-      <Box>
-
-    </Box>
-</>
-      }
       
 
+}
 
-       
+
+  
+   const handleChange = (event) => {
+    setAvailable(event.target.value);
+    console.log(available)
+    dispatch({
+      type: "setAvId",
+      data: available.id
+    })  
+  
+  }
+return (
+<>
+{success?(
+        <Navigate replace to="/dashboard" /> 
+
+):(
+<Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
+              <CssBaseline/>
+                  <FormTitle text={'Add Your Contact Information'}/>
+                  <InputFieldText
+                    type="text"
+                    name="first_name"
+                    label='First Name'
+                    id="first_name"
+                    value={formData.first_name}
+                    onChange={handleFormData}
+                  />
+                  <InputFieldText
+                      type="text"
+                      name="last_name"
+                      label='last Name'
+                      id="last_name"
+                      value={formData.last_name}
+                      onChange={handleFormData}
+                  />
+                  <InputFieldText
+                  name="phone"
+                  label="phone number"
+                  type="phone"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleFormData}
+                  />
+                  <InputFieldText
+                    name="email"
+                    label="email"
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleFormData}
+                  />
+
+                  <Box sx={{display:'flex' , gap:2,flexWrap:'wrap' , mt:2 ,justifyContent:'center'}}>
+                    {barbers.map((barb)=>
+                    <>
+                    <Typography sx={{color:'black'}}>Barber: {barb.first_name} {barb.last_name}</Typography>
+                    <FormControl fullWidth>
+
+                     <Select
+                     labelId="barber--label"
+                     id="barber-select"
+                     value={available}
+                     label="Barber"
+                     onChange={handleChange}
+                     >
+                   {barb.availabilitys.map((avail)=>
+                     <MenuItem sx={{color:'black'}} value={{avid:avail.id,bid:barb.id}}>{avail.id}---{avail.start}-{avail.start}</MenuItem>
+                   )}
+                   </Select>
+                   </FormControl>
+
+                   </> 
+                    )}
+
+                  </Box>
+
+
+                  
+          <FormButton text={"Book Appointment"} />
+
+        <Typography variant='body2' ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</Typography>
+  </Box>
+
+
+)
+
+
+}
+
+      
+
 </>
-
-
+ 
 )
 }
 
 export default NewClient
+// sessionStorage.setItem("clientFname",clientinfo.first_name)
+// sessionStorage.setItem("clientLname",clientinfo.last_name)
+// sessionStorage.setItem("clientPhone",clientinfo.phone)
+// sessionStorage.setItem("clientEmail",clientinfo.email)

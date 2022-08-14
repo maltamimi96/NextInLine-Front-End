@@ -1,4 +1,4 @@
-import {getAll} from "../Services/store.service"
+import {getAllStores} from "../Services/store.service"
 import  { useState,useEffect } from 'react'
 import StoreList from "../Components/Stores/StoreList"
 import NewStore from "../Components/Stores/NewStore"
@@ -20,7 +20,7 @@ function AdminDashboard() {
 
   useEffect(() => {
 
-      const data = getAll()
+      const data = getAllStores()
       data.then((data)=>setStores(data))
 
   }, [])

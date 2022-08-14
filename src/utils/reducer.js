@@ -46,6 +46,11 @@ export const reducer = (state, action) => {
             return {...state,storeId:action.data}  
 
         }
+        case "setAvId": {
+            //updates the token value
+            return {...state,storeId:action.data}  
+
+        }
         default: return state
     }
 

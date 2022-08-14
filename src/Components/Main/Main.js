@@ -1,12 +1,12 @@
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-function Main() {
+function Main({button,href,text}) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ backgroundColor: 'primary' }}>
-        <Typography variant="h2">
-          YOUR ONE PLACE SOLUTION FOR YOUR BARBER SHOP
+        <Typography variant="h5">
+          {text}
         </Typography>
       </Box>
       <Button
@@ -16,10 +16,17 @@ function Main() {
           width: '300px',
           alignSelf: 'center',
           mt: 4,
+          ' &:hover': {
+            backgroundColor: '#black',
+            boxShadow: 'none',
+            color:"red"
+          }
+
         }}
         variant="contained"
+        href={href}
       >
-        Join Now
+        {button}
       </Button>
     </Box>
   );

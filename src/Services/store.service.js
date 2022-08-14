@@ -13,7 +13,7 @@ const HEADER=
 
 
 
-export async function getAll(){
+export async function getAllStores(){
 
     const response = await API.get(STORE_URL.URL,HEADER)
     return response.data

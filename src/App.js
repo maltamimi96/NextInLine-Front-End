@@ -29,7 +29,8 @@ console.log(domain)
     loggedInUser: sessionStorage.getItem("user") || null,
     token: sessionStorage.getItem("token") || null,
     admin:  sessionStorage.getItem("admin") ,
-    storeId:null
+    storeId:null,
+    avId:null,
   }
   const [store, dispatch] = useReducer(reducer, initialState)
 

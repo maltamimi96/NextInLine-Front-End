@@ -15,13 +15,14 @@ const styleBoxImage = {
   height: '200px',
   objectFit: 'cover',
 };
+const text="NEXT IN LINE will tranform your walk-in business with our Barber Queue App and Beauty Queue App. We are the only system to combine the flexibility of a queue or walk-ins with the certainty of bookings. The transition for clients is easier because clients can still walk-in, you minimize walk past clients by reducing your in-store wait time and smoothing the arrivals. We are a complete management tool capturing your client data and automating alerts and notifications."
 
 function Home() {
   return (
     <>
       <NavBar />
       <section className="jumbotron">
-        <Main></Main>
+        <Main button={"Join Now"}href={"/login"} text={text}></Main>
       </section>
       <section className="banner theme--color">
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 10 }}>

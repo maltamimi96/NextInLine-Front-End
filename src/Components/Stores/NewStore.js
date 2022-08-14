@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography'
 import InputFieldText from '../UniversalComponents/InputFieldText'
 import FormButton from '../UniversalComponents/FormButton'
 import FormTitle from '../UniversalComponents/FormTitle'
+import { createDomain } from '../../Services/domain.service'
 
 
 function NewStore() {
@@ -28,7 +29,11 @@ function NewStore() {
   const handleSubmit = (e)=>{
     e.preventDefault()
     createStore(formData)
+    console.log(createStore)
+    
   }
+
+
   return (
     
 
