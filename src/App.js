@@ -32,8 +32,6 @@ function App() {
     client:{},
     barber:{},
  
-
-
   }
   const [store, dispatch] = useReducer(reducer, initialState)
 
@@ -46,8 +44,6 @@ function App() {
         
         
         <Router>
-
-
           <Routes>
             {/* Public Routes */}
               <Route path="/" element={<Home/>}/>
@@ -55,7 +51,7 @@ function App() {
               <Route path="/booking" element={<Booking/>}/>
 
               {stores.map((str)=>
-                <Route path={str.name.replace(/\s+/g, '')} element={<StoreHome name={str.name} id={str.id}/>}>
+                <Route path={str.domain} element={<StoreHome name={str.name} id={str.id}/>}>
                 </Route>
               )}
               
@@ -69,8 +65,6 @@ function App() {
                 <Route path='/admin' element={<AdminDashboard/>} />
               </Route>
               <Route path='/unauthorised' element={<Unauthorised/>} />
-
-
           </Routes>
         </Router>
       </ThemeProvider>

@@ -46,15 +46,15 @@ function Login() {
     
     dispatch({
       type: "setLoggedInUser",
-      data: response.username
-  })
+      data:  sessionStorage.getItem("token",jwt)
+    })
   dispatch({
       type: "setToken",
-      data: response.jwt
+      data: sessionStorage.getItem("token",jwt)
   })
   dispatch({
     type: "setAdmin",
-    data: response.admin
+    data: sessionStorage.getItem("admin",admin)
 })
     setSuccess(true)
     }).catch ((err)=>{ if (!err?.response) {
@@ -79,7 +79,7 @@ const handleFormData = (e) => {
     <>
   {success ? (
 
-          <Navigate replace to="/" /> 
+          <Navigate replace to="/dashboard" /> 
   ) : (
     
 

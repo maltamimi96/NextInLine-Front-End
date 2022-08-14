@@ -36,7 +36,6 @@ function NewClient() {
       const [bookingData, setBookingData] = useState(BookingState)
       const [barbers, setBarbers] = useState([]);
       const [available, setAvailable] = useState([]);
-      const [toggle, setToggle] = useState({});
        const errRef = useRef()
 
       useEffect(() => {
@@ -61,7 +60,6 @@ function NewClient() {
     const handleChange = (event) => {
       setAvailable(event.target.value);
       handleFormDataBooking()
-      setToggle(true)
       console.log(bookingData)
       
       
@@ -153,7 +151,7 @@ return (
                     </Box>
                 </Box>
              )}
-            {toggle&&<BookAppointment bookingData={bookingData}/>}
+            {/* {toggle&&<BookAppointment bookingData={bookingData}/>} */}
           </Box>
           
         </>

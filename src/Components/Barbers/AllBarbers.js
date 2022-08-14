@@ -11,15 +11,17 @@ import FormTitle from "../UniversalComponents/FormTitle";
 import FormButton from "../UniversalComponents/FormButton";
 import {getAll} from '../../Services/barber.service'
 import {getMyStore} from '../../Services/store.service'
-
+import{useGlobalState} from '../../utils/stateContext'
 
 
 function AllBarbers() {
-
+  const {store,dispatch} = useGlobalState()
+  const {storeId}=store
+console.log(storeId)
   const [barbers, setBarbers] = useState([]);
   const [available, setAvailable] = useState([]);
   useEffect(() => {
-    getAll().then((getAll)=>setBarbers(getAll))
+    getAll(storeId).then((getAll)=>setBarbers(getAll))
 }, [])
 const handleChange = (event) => {
   setAvailable(event.target.value);
@@ -48,9 +50,6 @@ const handleChange = (event) => {
                     </FormControl>
                     </Box>
                 </Box>
-
-                
-                
              )}
           </Box>
   

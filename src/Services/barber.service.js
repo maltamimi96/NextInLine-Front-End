@@ -11,9 +11,8 @@ const HEADER=
     headers: { 'Content-Type': 'application/json' }
 }
 
-export async function getAll(){
-    const params={store_id:1}
-    const response = await API.get(BARBER_URL.URL,{params},HEADER)
+export async function getAll(store_id){
+    const response = await API.get(BARBER_URL.URL,{store_id},HEADER)
     return response.data
 }
 

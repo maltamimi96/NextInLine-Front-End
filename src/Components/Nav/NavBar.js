@@ -19,7 +19,9 @@ import { useNavigate } from "react-router-dom";
 import SortIcon from '@mui/icons-material/Sort';
 const settings = ['Account','logout'];
 
-function NavBar() {
+
+
+function Appbar() {
   const {store, dispatch} = useGlobalState()
   const {loggedInUser} = store
   const pages = ["Products", "Pricing", "Blog"];
@@ -32,7 +34,7 @@ function NavBar() {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   }
-
+console.log(loggedInUser)
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   }
@@ -136,7 +138,12 @@ function NavBar() {
 
           >
               <MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
-              <Button onClick={handleCloseNavMenu}sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}href={loggedInUser?"/dashboard":"/login"}>{loggedInUser?"Dashboard":"Account"} </Button>    
+              <Button 
+              onClick={handleCloseNavMenu}
+              sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}
+              href={loggedInUser?"/dashboard":"/login"}>
+                {loggedInUser?"Dashboard":"Account"}
+                 </Button>    
              </MenuItem>
 
              
@@ -165,5 +172,5 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default Appbar
 

@@ -63,7 +63,7 @@ return (
   <>
 {success ? (
 
-        <Navigate replace to="/login" /> 
+        <Navigate replace to="/" /> 
 ) : (
   
 
