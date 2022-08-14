@@ -1,3 +1,68 @@
+
+
+## Purpose
+
+
+The purpose of **NEXT IN LINE** application is to provide a solution for hair dressers and barbers to manage their daily clients and organise their daily workflow. The application enable the shop owners to have a queing system for their clients , and allows them to manage activities in timely manner. 
+Delivering services to clients and saving them time on coming to the premise and wait some times for hours.
+
+## Functionality/Features
+
+**Landing Page--Targeted For Shop Owners**
+
+ - Shows Information about the Application 
+ - Links to Sign-up page
+ 
+
+**Store Dashboard**
+
+ - Manage Availability - User can Add Remove Update and Delete Availability
+ - Manage Barbers--Can Add and remove new barbers .
+ - Manage Hair Styles --User can Add Remove Update and Delete Hair Styles and manage their Duration.
+ - Manage Clients-- User can Add Remove Update and Delete Clients 
+
+**Store Landing Page**
+
+ - Details about the shop and services provided
+ - Links To Booking Page 
+
+**Booking Page**
+
+ - Clients Can View Availability and choose hairstyle then  to appointment.
+ - User Adds their Personal Information . 
+ - Application Generates booking number that can be used to edit booking later
+ - Edit Booking 
+
+
+**View/Edit Booking**
+Client enters booking id to view booking and has choice to cancel booking.
+
+ 
+
+
+## Target Audience
+
+ Hair Dressers
+ Barbers
+ Beauty Salons
+ People looking to save time on hair styling services.
+
+## Tech Stack
+
+ - Ruby On Rails--Backend API
+ - React JS--Front End 
+ - PostgreSQL--Data Base
+ - HTML
+ - CSS
+ - MATERIAL UI v5--Styled React Components
+ - GIT/GITHUB --Version Control
+ 
+ 
+## Diagrams
+
+https://drive.google.com/file/d/123GtsGSeT975Z9hMRfGiE7hemKkTY8XH/view?usp=sharing
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
