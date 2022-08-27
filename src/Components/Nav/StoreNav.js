@@ -4,12 +4,10 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
-import Link from '@mui/material/Link';
 import Tooltip from "@mui/material/Tooltip";
 
 import SortIcon from '@mui/icons-material/Sort';
@@ -36,7 +34,7 @@ function StoreNav(props) {
     return (
       <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar >
   
           <Typography
             variant="h5"

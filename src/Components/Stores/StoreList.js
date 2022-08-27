@@ -4,9 +4,9 @@ import { DataGrid } from '@mui/x-data-grid';
 
 
 
-
-
 function StoreList({stores}) {
+  
+  
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
    

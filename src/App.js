@@ -1,7 +1,6 @@
 import { theme } from "./Theme/Theme";
 import { ThemeProvider} from '@mui/material/styles';
-import NavBar from "./Components/Nav/NavBar";
-import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Authentication from "./Pages/Authentication";
 import Home from "./Pages/Home";
 import AdminDashboard from "./Pages/AdminDashboard";
@@ -24,13 +23,11 @@ function App() {
   useEffect(() => {
     getAllDomains().then((getAll)=>setDomain(getAll))
 }, [])
-console.log(domain)
   const initialState = {
     loggedInUser: sessionStorage.getItem("user") || null,
     token: sessionStorage.getItem("token") || null,
     admin:  sessionStorage.getItem("admin") ,
-    storeId:null,
-    avId:null,
+    userStore:null
   }
   const [store, dispatch] = useReducer(reducer, initialState)
 

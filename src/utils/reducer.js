@@ -46,6 +46,10 @@ export const reducer = (state, action) => {
             return {...state,storeId:action.data}  
 
         }
+        case "setUserStore": {
+            //updates the token value
+            return {...state,store:action.data}  
+        }
         case "setAvId": {
             //updates the token value
             return {...state,storeId:action.data}  

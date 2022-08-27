@@ -10,11 +10,16 @@ import AllClients from '../Components/Clients/AllClients';
 import NewClient from '../Components/Clients/NewClient';
 import MyStore from '../Components/Stores/MyStore'
 import NewStore from '../Components/Stores/NewStore'
-import {useState} from 'react'
 import NavBar from '../Components/Nav/NavBar';
-
+import { useGlobalState } from "../utils/stateContext"
+import { useRef, useState, useReducer,useEffect } from 'react'
+import {showStore} from '../Services/store.service'
 
 function StoreDashboard() {
+
+
+  const {store,dispatch} = useGlobalState()
+
   const [selectedTab, setSelectedTab] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -30,7 +35,17 @@ function StoreDashboard() {
 
 
 
+  useEffect(() => {
+    showStore(1).then((str)=>
+    dispatch({
+      type: "setUserStore",
+      data:  str
+    }))
 
+
+
+}, [])
+console.log(store)
   
   return (
 <>

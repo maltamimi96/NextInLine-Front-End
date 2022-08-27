@@ -3,7 +3,6 @@ import React from 'react'
 
 function AvailableBooking({barbers}) {
     const data=[barbers]
-    console.log(data)
     return (
     <Box sx={{display:'flex',}}>
 

@@ -29,7 +29,6 @@ function NewStore() {
   const handleSubmit = (e)=>{
     e.preventDefault()
     createStore(formData)
-    console.log(createStore)
     
   }
 

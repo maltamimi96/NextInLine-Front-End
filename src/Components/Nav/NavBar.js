@@ -34,7 +34,6 @@ function Appbar() {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   }
-console.log(loggedInUser)
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   }
@@ -53,6 +52,10 @@ console.log(loggedInUser)
         type: "setToken",
         data: null 
     })
+    dispatch({
+      type: "cleanState",
+      data: null 
+  })
     navigate('/')
     
 }
@@ -137,7 +140,7 @@ console.log(loggedInUser)
             onClose={handleCloseUserMenu}
 
           >
-              <MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
+              <MenuItem  onClick={handleCloseUserMenu}  >
               <Button 
               onClick={handleCloseNavMenu}
               sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}
@@ -147,7 +150,7 @@ console.log(loggedInUser)
              </MenuItem>
 
              
-              {loggedInUser&&<MenuItem  onClick={handleCloseUserMenu} disableGutters='true' divider='true' >
+              {loggedInUser&&<MenuItem  onClick={handleCloseUserMenu}  >
               <Button onClick={logout}sx={{ width:'100px', color: "black",fontWeight:'500', display: "block" }}>logout</Button>    
               </MenuItem> }
             

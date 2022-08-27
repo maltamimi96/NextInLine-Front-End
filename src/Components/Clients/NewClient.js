@@ -68,7 +68,6 @@ function NewClient() {
     // const handleChange = (event) => {
     //   setAvailable(event.target.value);
     //   handleFormDataBooking()
-    //   console.log(bookingData)
       
       
     // }
@@ -94,7 +93,6 @@ function NewClient() {
          
        sessionStorage.setItem("clientId",clientinfo.id)
           handleFormDataBooking()
-          console.log(bookingData)
           createBooking(bookingData)
           setSuccess(true)
         }).catch ((err)=>{ if (!err?.response) {
@@ -108,7 +106,6 @@ function NewClient() {
       }
       errRef.current.focus()}) 
 
-      console.log(available)
 
       
 
@@ -118,7 +115,6 @@ function NewClient() {
   
    const handleChange = (event) => {
     setAvailable(event.target.value);
-    console.log(available)
     dispatch({
       type: "setAvId",
       data: available.id

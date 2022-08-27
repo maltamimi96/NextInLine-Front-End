@@ -20,7 +20,6 @@ const styleBoxImage = {
 };
 function StoreHome({name,id}) {
     const {store,dispatch} = useGlobalState()
-    console.log("store id param ",id)
     useEffect(() => {
 
           sessionStorage.setItem('store',id)
@@ -32,7 +31,6 @@ function StoreHome({name,id}) {
     }, [id])
 
     const{storeId}=store
-    console.log("from context",name)
     const text=`Located within the heart of Western Sydney, ${name} Barbers's crew are master hair stylists with over 13 years experience with a modern twist. Whether you're after a styled quick cut of the top or a unique custom fade, we've got you covered! Inspired from the underground talent worldwide and a spritz of cracker banter, we strive to make your experience unforgettable.`
 
   return (

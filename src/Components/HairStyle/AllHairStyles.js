@@ -4,12 +4,10 @@ import React from 'react'
 import {getAllHair} from '../../Services/hair_style.service'
 function AllHairStyles() {
     const[hair,setHair]=React.useState([])
-    console.log(hair)
     React.useEffect(() => {
           
         getAllHair().then((getAllHair)=>setHair(getAllHair))
       }, [])
-      console.log(hair)
 
 
       const handleChange = (event) => {

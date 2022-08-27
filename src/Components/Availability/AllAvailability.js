@@ -13,7 +13,6 @@ function AllAvailability() {
      getAll().then((getAll)=>setAvailability(getAll))
      
 }, [])
-availability?.map((av)=> console.log(av))
 // Get all availability and Displays Them
   return (
 

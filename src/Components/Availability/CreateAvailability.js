@@ -26,14 +26,12 @@ function CreateAvailability() {
     const handleChange = (event) => {
       setAge(event.target.value);
     }
-    console.log(barbers)
     
     
 
 
     const handleChangeStart = (value) => {
       setStart(value);
-      console.log(start)
 
     }
     const handleChangeEnd = (value) => {

@@ -37,7 +37,7 @@ export async function updateStore(id,data)
     return response.data
 }
 
-export async function getMyStore(id){
+export async function showStore(id){
     const response = await API.get(STORE_URL.URL_ID+id,HEADER)
     return response.data
 }

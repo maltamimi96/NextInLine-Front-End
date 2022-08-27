@@ -11,16 +11,13 @@ function AdminRoutes() {
      const {admin} = store
     let r=false
 
-    console.log(store.admin,"from admin")
     if (admin ==="false"){
          r=false
       }else if (admin==="true"){
          r=true
       }
       else{
-        console.log(r)
       }
-      console.log(admin)
 
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import {getMyStore} from '../../Services/store.service'
+import {showStore} from '../../Services/store.service'
 import { useRef, useState, useReducer,useEffect } from 'react'
 import { useGlobalState } from "../../utils/stateContext"
 import { Box } from '@mui/system'
@@ -10,25 +10,14 @@ import FormTitle from '../UniversalComponents/FormTitle'
 import NewStore from './NewStore'
 function MyStore() {
 
-      const initialState={
-            name:'',
-            location:'',
-            user_id:1,
-          }
-const [store, setStore] = useState(initialState)
+
+const [store, setStore] = useState([])
 const [allowEdit, setAllowEdit] = useState(false)
 
 
-    useEffect(() => {
-      getMyStore(1).then((str)=>setStore(str))
-  
-  }, [])
+
 
   
-
-    const handleClick=()=>{
-      setAllowEdit(true)
-    }
   return (
     <>
       <Box

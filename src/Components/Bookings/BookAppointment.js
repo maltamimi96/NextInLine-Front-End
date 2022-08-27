@@ -16,7 +16,6 @@ function BookAppointment({bookingData}) {
         updateAvailability(bookingData.availability_id,{booked:true})
       
     }
-    console.log(booking)
   return (
     <Box>
         <Button onClick={handleSubmit}>Confirm Booking</Button>

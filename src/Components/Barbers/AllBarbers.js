@@ -8,7 +8,6 @@ import{useGlobalState} from '../../utils/stateContext'
 function AllBarbers() {
   const {store,dispatch} = useGlobalState()
   const {storeId}=store
-console.log(storeId)
   const [barbers, setBarbers] = useState([]);
   const [available, setAvailable] = useState([]);
   useEffect(() => {
@@ -17,7 +16,6 @@ console.log(storeId)
 }, [])
 const handleChange = (event) => {
   setAvailable(event.target.value);
-  console.log(available)
   dispatch({
     type: "setAvId",
     data: available.id
